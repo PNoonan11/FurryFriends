@@ -51,18 +51,18 @@ namespace FurryFriends.Services.Reply
 
         public async Task<IEnumerable<ReplyListItem>> GetAllReplyAsync(PaginationFilter _filter, HttpContext httpContext)
         {
-            var posts = _DbContext.Reply
+            var replies = _DbContext.Reply
                 .OrderBy(p => p.Id)
                 .Select(entity => _mapper.Map<ReplyListItem>(entity));
 
-            var paginationMetadata = new PaginationMetaData(posts.Count(), _filter.CurrentPage, _filter.PageSize);
+            var paginationMetadata = new PaginationMetaData(replies.Count(), _filter.CurrentPage, _filter.PageSize);
             httpContext.Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetadata));
 
-            var items = await posts.Skip((_filter.CurrentPage - 1) * _filter.PageSize)
+            var items = await replies.Skip((_filter.CurrentPage - 1) * _filter.PageSize)
                 .Take(_filter.PageSize)
                 .ToListAsync();
 
-            return items;
+            return replies;
 
         }
 

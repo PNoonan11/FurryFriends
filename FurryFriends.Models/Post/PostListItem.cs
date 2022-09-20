@@ -12,6 +12,6 @@ namespace FurryFriends.Models.Post
         public DateTime DateTimeUpdated { get; set; }
 
         public int OwnerId { get; set; }
-        public CommentEntity Comments { get; set; }
+        // public CommentEntity Comments { get; set; }
     }
 }

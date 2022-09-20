@@ -12,6 +12,6 @@ namespace FurryFriends.Data.Entities
         public DateTime DateTimeCreated { get; set; }
         [ForeignKey("RelatedPost")]
         public int PostId { get; set; }
-        public PostEntity RelatedPost { get; set; }
+        //public PostEntity RelatedPost { get; set; }
     }
 }

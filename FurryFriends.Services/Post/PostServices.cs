@@ -42,7 +42,7 @@ namespace FurryFriends.Services.Post
         public async Task<PostListItem> GetPostByIdAsync(int postId)
         {
             var postToUser = await _DbContext.Post
-            .Include(r => r.Comments)
+            // .Include(r => r.Comments)
             .FirstOrDefaultAsync(e => e.Id == postId);
 
             return postToUser is null ? null : _mapper.Map<PostListItem>(postToUser);

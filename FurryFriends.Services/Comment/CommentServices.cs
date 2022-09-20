@@ -65,6 +65,8 @@ namespace FurryFriends.Services.Comment
         {
 
             var updatedComment = _mapper.Map<CommentUpdate, CommentEntity>(request);
+            _DbContext.Entry(updatedComment).State = EntityState.Modified;
+            _DbContext.Entry(updatedComment).Property(e => e.DateTimeCreated).IsModified = false;
             var numberOfChanges = await _DbContext.SaveChangesAsync();
 
             return numberOfChanges == 1;

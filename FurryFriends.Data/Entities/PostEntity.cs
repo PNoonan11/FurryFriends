@@ -14,6 +14,6 @@ namespace FurryFriends.Data.Entities
 
         public int OwnerId { get; set; }
         public UserEntity Owner { get; set; }
-        public CommentEntity Comments { get; set; }
+        //public CommentEntity Comments { get; set; }
     }
 }
